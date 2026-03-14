@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for password hashing and secure token helpers.
+*/

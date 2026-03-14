@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player Stats | Velvet River Poker Admin</title>
+    <link rel="stylesheet" href="../frontend/css/style.css" />
+    <link rel="stylesheet" href="../frontend/css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <aside class="admin-sidebar stack">
+        <div class="brand">
+          <div class="brand-mark">VR</div>
+          <div class="brand-copy"><h2>Admin Suite</h2><p class="muted">Stats overview demo</p></div>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./players.html">Players</a>
+          <a href="./tables.html">Tables</a>
+          <a href="./chipRequests.html">Chip Requests</a>
+          <a href="./rakeReports.html">Rake Reports</a>
+          <a href="./handHistory.html">Hand History</a>
+          <a class="active" href="./playerStats.html">Player Stats</a>
+        </nav>
+      </aside>
+
+      <section class="admin-main">
+        <header class="admin-header">
+          <div>
+            <div class="eyebrow">Performance Metrics</div>
+            <h1 class="section-title">Player stats layout</h1>
+            <p class="muted">A visual shell for ranking, wins, losses, hands played, and profitability snapshots.</p>
+          </div>
+        </header>
+
+        <section class="metric-grid">
+          <article class="admin-card admin-metric">
+            <span class="badge">Hands tracked</span>
+            <strong>18,420</strong>
+            <p class="muted">Total hands across the current reporting view.</p>
+          </article>
+          <article class="admin-card admin-metric">
+            <span class="badge success">Top winner</span>
+            <strong>$14.8k</strong>
+            <p class="muted">Reserved value for leaderboard highlights.</p>
+          </article>
+          <article class="admin-card admin-metric">
+            <span class="badge">Most active</span>
+            <strong>421</strong>
+            <p class="muted">Hands played by the current volume leader.</p>
+          </article>
+          <article class="admin-card admin-metric">
+            <span class="badge alert">Variance watch</span>
+            <strong>9</strong>
+            <p class="muted">Accounts flagged for unusual swing patterns.</p>
+          </article>
+        </section>
+
+        <section class="admin-table-wrap" style="margin-top: 18px;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Hands played</th>
+                <th>Net result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>River Mint</td>
+                <td>148</td>
+                <td>92</td>
+                <td>421</td>
+                <td>$14,800</td>
+              </tr>
+              <tr>
+                <td>Luna Stack</td>
+                <td>130</td>
+                <td>102</td>
+                <td>398</td>
+                <td>$8,240</td>
+              </tr>
+              <tr>
+                <td>North Ace</td>
+                <td>101</td>
+                <td>111</td>
+                <td>366</td>
+                <td>$1,920</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

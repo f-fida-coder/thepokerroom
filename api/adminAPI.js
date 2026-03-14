@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for admin dashboard endpoints and controls.
+*/

@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for player tracking and seat state management.
+*/

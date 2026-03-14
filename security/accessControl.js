@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for role checks and table join access rules.
+*/

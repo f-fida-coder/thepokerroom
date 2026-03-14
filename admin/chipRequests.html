@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chip Requests | Velvet River Poker Admin</title>
+    <link rel="stylesheet" href="../frontend/css/style.css" />
+    <link rel="stylesheet" href="../frontend/css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <aside class="admin-sidebar stack">
+        <div class="brand">
+          <div class="brand-mark">VR</div>
+          <div class="brand-copy"><h2>Admin Suite</h2><p class="muted">Chip approval demo</p></div>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./players.html">Players</a>
+          <a href="./tables.html">Tables</a>
+          <a class="active" href="./chipRequests.html">Chip Requests</a>
+          <a href="./rakeReports.html">Rake Reports</a>
+          <a href="./handHistory.html">Hand History</a>
+          <a href="./playerStats.html">Player Stats</a>
+        </nav>
+      </aside>
+
+      <section class="admin-main">
+        <header class="admin-header">
+          <div>
+            <div class="eyebrow">Chip Queue</div>
+            <h1 class="section-title">Pending chip requests</h1>
+            <p class="muted">A simple queue view for approve, deny, and manual chip adjustments.</p>
+          </div>
+        </header>
+
+        <section class="admin-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Request ID</th>
+                <th>Player</th>
+                <th>Table</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Floor action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>REQ-1042</td>
+                <td>Golden Pair</td>
+                <td>High Tide Hold'em</td>
+                <td>$500</td>
+                <td><span class="badge">Pending</span></td>
+                <td>Approve / Deny</td>
+              </tr>
+              <tr>
+                <td>REQ-1043</td>
+                <td>North Ace</td>
+                <td>Brass Lantern PLO</td>
+                <td>$1,000</td>
+                <td><span class="badge alert">Review</span></td>
+                <td>Escalate / Hold</td>
+              </tr>
+              <tr>
+                <td>REQ-1044</td>
+                <td>Luna Stack</td>
+                <td>High Tide Hold'em</td>
+                <td>$300</td>
+                <td><span class="badge success">Approved</span></td>
+                <td>Delivered</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for hand ranking and showdown comparisons.
+*/

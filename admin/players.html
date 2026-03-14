@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Players | Velvet River Poker Admin</title>
+    <link rel="stylesheet" href="../frontend/css/style.css" />
+    <link rel="stylesheet" href="../frontend/css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <aside class="admin-sidebar stack">
+        <div class="brand">
+          <div class="brand-mark">VR</div>
+          <div class="brand-copy"><h2>Admin Suite</h2><p class="muted">Player management demo</p></div>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="./dashboard.html">Dashboard</a>
+          <a class="active" href="./players.html">Players</a>
+          <a href="./tables.html">Tables</a>
+          <a href="./chipRequests.html">Chip Requests</a>
+          <a href="./rakeReports.html">Rake Reports</a>
+          <a href="./handHistory.html">Hand History</a>
+          <a href="./playerStats.html">Player Stats</a>
+        </nav>
+      </aside>
+
+      <section class="admin-main">
+        <header class="admin-header">
+          <div>
+            <div class="eyebrow">Player Directory</div>
+            <h1 class="section-title">Player overview</h1>
+            <p class="muted">Static list layout for balances, seat status, moderation actions, and access state.</p>
+          </div>
+          <div class="admin-toolbar">
+            <span class="toolbar-chip">146 total users</span>
+            <span class="toolbar-chip">12 flagged accounts</span>
+          </div>
+        </header>
+
+        <section class="admin-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Status</th>
+                <th>Current table</th>
+                <th>Chip balance</th>
+                <th>Security state</th>
+                <th>Admin action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Luna Stack</td>
+                <td><span class="badge success">Active</span></td>
+                <td>High Tide Hold'em</td>
+                <td>$4,850</td>
+                <td>Verified</td>
+                <td>View / Kick / Add Chips</td>
+              </tr>
+              <tr>
+                <td>North Ace</td>
+                <td><span class="badge">Seated</span></td>
+                <td>Brass Lantern PLO</td>
+                <td>$3,400</td>
+                <td>Review pending</td>
+                <td>Review / Freeze</td>
+              </tr>
+              <tr>
+                <td>River Mint</td>
+                <td><span class="badge success">Active</span></td>
+                <td>High Tide Hold'em</td>
+                <td>$6,120</td>
+                <td>Verified</td>
+                <td>Message / Remove Chips</td>
+              </tr>
+              <tr>
+                <td>Coral Flush</td>
+                <td><span class="badge alert">Flagged</span></td>
+                <td>Lobby</td>
+                <td>$2,100</td>
+                <td>Needs code check</td>
+                <td>Inspect / Ban</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

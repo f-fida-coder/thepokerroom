@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for player and admin authentication flows.
+*/

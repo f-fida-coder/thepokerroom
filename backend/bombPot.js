@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for bomb pot configuration and triggers.
+*/

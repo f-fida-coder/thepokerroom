@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for rake collection and reporting support.
+*/

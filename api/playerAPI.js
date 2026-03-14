@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for player actions and profile endpoints.
+*/

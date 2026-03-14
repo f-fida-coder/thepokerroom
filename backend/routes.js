@@ -1,0 +1,4 @@
+/*
+  Demo scaffold only.
+  Reserved for central API route registration.
+*/
