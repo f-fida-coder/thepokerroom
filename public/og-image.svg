@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="The poker room social preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14070b" />
+      <stop offset="50%" stop-color="#1d0a11" />
+      <stop offset="100%" stop-color="#070305" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="36%" r="52%">
+      <stop offset="0%" stop-color="#d3aa6d" stop-opacity="0.30" />
+      <stop offset="100%" stop-color="#d3aa6d" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0c98a" />
+      <stop offset="50%" stop-color="#c58a4e" />
+      <stop offset="100%" stop-color="#8e5b31" />
+    </linearGradient>
+    <linearGradient id="felt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a111d" />
+      <stop offset="100%" stop-color="#22080e" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+
+  <ellipse cx="600" cy="370" rx="345" ry="138" fill="#090306" opacity="0.65" />
+  <ellipse cx="600" cy="355" rx="340" ry="132" fill="url(#gold)" />
+  <ellipse cx="600" cy="348" rx="312" ry="116" fill="#2a120c" />
+  <ellipse cx="600" cy="338" rx="286" ry="98" fill="url(#felt)" />
+
+  <g fill="#f7ead3">
+    <text x="600" y="170" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" text-anchor="middle">
+      The poker room
+    </text>
+    <text x="600" y="225" font-family="Arial, Helvetica, sans-serif" font-size="28" text-anchor="middle" opacity="0.82">
+      Premium private poker platform demo
+    </text>
+  </g>
+
+  <g>
+    <rect x="420" y="288" width="76" height="108" rx="12" fill="#f6f0e6" />
+    <rect x="704" y="288" width="76" height="108" rx="12" fill="#f6f0e6" />
+    <rect x="516" y="280" width="76" height="108" rx="12" fill="#f6f0e6" />
+    <rect x="610" y="280" width="76" height="108" rx="12" fill="#f6f0e6" />
+    <text x="458" y="356" font-family="Georgia, serif" font-size="34" fill="#8c1d2f" text-anchor="middle">A♥</text>
+    <text x="554" y="348" font-family="Georgia, serif" font-size="34" fill="#111111" text-anchor="middle">K♠</text>
+    <text x="648" y="348" font-family="Georgia, serif" font-size="34" fill="#111111" text-anchor="middle">Q♣</text>
+    <text x="742" y="356" font-family="Georgia, serif" font-size="34" fill="#8c1d2f" text-anchor="middle">8♦</text>
+  </g>
+
+  <g fill="#ead7b7">
+    <text x="600" y="500" font-family="Arial, Helvetica, sans-serif" font-size="26" text-anchor="middle" opacity="0.88">
+      Luxury tables • Spectator mode • Admin control
+    </text>
+  </g>
+</svg>
