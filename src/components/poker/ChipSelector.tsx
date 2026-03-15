@@ -17,10 +17,10 @@ export default function ChipSelector({ min, max, onConfirm, onCancel }: ChipSele
     <div className="w-full max-w-xl rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(25,10,14,0.94),rgba(9,4,7,0.98))] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.48)]">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="club-label text-[#d6b078]">Raise Selector</div>
-          <h3 className="club-display mt-3 text-4xl text-[#fff4e7]">Set the demo amount</h3>
+          <div className="club-label text-[#d6b078]">Raise Amount</div>
+          <h3 className="club-display mt-3 text-4xl text-[#fff4e7]">Choose your raise</h3>
           <p className="mt-4 text-sm leading-7 text-[#eadcc9]/72">
-            This is a front-end showcase control only. Use it to make the table feel alive and responsive during demos.
+            Set your raise size, confirm the amount, and return straight to the hand.
           </p>
         </div>
         <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#d3aa6d]/16 bg-[#d3aa6d]/10">

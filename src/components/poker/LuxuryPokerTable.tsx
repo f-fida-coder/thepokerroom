@@ -99,7 +99,7 @@ export default function LuxuryPokerTable({
             <div className="club-table__trim" />
             <div className="club-table__felt">
               <div className="club-table__brand">
-                <span>The poker room</span>
+                <span>Private table</span>
                 <strong>{announcement}</strong>
               </div>
 

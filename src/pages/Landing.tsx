@@ -290,7 +290,7 @@ export default function Landing({ onNavigate, onOpenTable }: LandingProps) {
                 <Spade className="h-5 w-5 text-[#f2c585]" />
               </div>
               <div>
-                <div className="club-display text-2xl leading-none text-[#fff4e8]">The poker room</div>
+                <div className="club-display text-2xl leading-none text-[#fff4e8]">Private Card Room</div>
                 <div className="mt-1 text-[0.68rem] uppercase tracking-[0.34em] text-[#d2ae73]/70">
                   Premium Player Lounge
                 </div>
@@ -922,7 +922,7 @@ export default function Landing({ onNavigate, onOpenTable }: LandingProps) {
                       <Spade className="h-5 w-5 text-[#f2c585]" />
                     </div>
                     <div>
-                      <div className="club-display text-2xl text-[#fff4e8]">The poker room</div>
+                      <div className="club-display text-2xl text-[#fff4e8]">Private Card Room</div>
                       <div className="mt-1 text-[0.68rem] uppercase tracking-[0.32em] text-[#d2ae73]/70">
                         Premium Player Lounge
                       </div>

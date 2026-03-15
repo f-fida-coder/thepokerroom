@@ -146,7 +146,7 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
   const [secondsLeft, setSecondsLeft] = useState(26);
   const [showRaiseModal, setShowRaiseModal] = useState(false);
   const [showChipRequestModal, setShowChipRequestModal] = useState(false);
-  const [heroBanner, setHeroBanner] = useState(sceneSequence[0]?.actionLine ?? 'Seat live. Demo actions are available below.');
+  const [heroBanner, setHeroBanner] = useState(sceneSequence[0]?.actionLine ?? 'Your seat is live. Action is ready below.');
 
   const scene = sceneSequence[sceneIndex];
 
@@ -185,10 +185,10 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
   const highestBet = Math.max(0, ...Object.values(scene.bets));
   const canCheck = scene.activeSeatId !== 'hero' || highestBet === 0;
   const statusItems = [
-    { label: 'Room code', value: table.roomCode ?? 'Private room' },
+    { label: 'Access code', value: table.roomCode ?? 'Private room' },
     { label: 'Bomb pot', value: table.bombPot ?? 'Off' },
-    { label: 'Run mode', value: table.runMode ?? 'Run once' },
-    { label: 'Seats', value: `${table.currentPlayers}/${table.maxPlayers} seated` }
+    { label: 'Run it', value: table.runMode ?? 'Run once' },
+    { label: 'Seated', value: `${table.currentPlayers}/${table.maxPlayers} players` }
   ];
 
   const handleAction = (label: string) => {
@@ -201,7 +201,7 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
         current="table"
         onNavigate={onNavigate}
         title={`${table.name} • ${table.stakes}`}
-        subtitle="Private table experience"
+        subtitle="Live Private Table"
         compact
       />
 
@@ -213,10 +213,10 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
           <div className="relative z-10">
             <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
               <div className="min-w-0">
-                <div className="club-label text-[#d6b078]">Private Poker Room</div>
+                <div className="club-label text-[#d6b078]">Live Private Table</div>
                 <h1 className="club-display mt-3 text-3xl text-[#fff4e7] sm:text-4xl lg:text-5xl">{table.name}</h1>
                 <p className="mt-3 max-w-3xl text-sm leading-7 text-[#eadcc9]/76 sm:text-base">
-                  {scene.announcement}. Discover the action on felt, make the call, and play through a cleaner premium table view.
+                  {scene.announcement}. Follow the hand, act with confidence, and stay fully immersed in a cleaner premium table view.
                 </p>
                 <p className="mt-3 text-[0.72rem] uppercase tracking-[0.28em] text-[#d4af77]/74">
                   {table.gameType} • {table.blindsLabel} • {scene.label}
@@ -226,7 +226,7 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
               <div className="flex flex-wrap items-center gap-3 xl:justify-end">
                 <div className="flex items-center gap-4 rounded-full border border-white/10 bg-black/25 px-4 py-3 backdrop-blur-xl">
                   <div className="min-w-0">
-                    <div className="club-label text-[#d4af77]">Action Clock</div>
+                    <div className="club-label text-[#d4af77]">Shot Clock</div>
                     <div className="mt-1 text-sm text-[#f4e6d2]">{scene.label} in progress</div>
                   </div>
                   <TimerRing seconds={secondsLeft} maxSeconds={26} />
@@ -281,7 +281,7 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
               </div>
 
               <div className="mx-auto mt-4 w-fit rounded-full border border-[#d3aa6d]/18 bg-[linear-gradient(180deg,rgba(18,7,10,0.92),rgba(7,3,5,0.88))] px-4 py-2.5 shadow-[0_18px_40px_rgba(0,0,0,0.3)] backdrop-blur-xl">
-                <span className="club-label text-[#d4af77]">Your Hand</span>
+                <span className="club-label text-[#d4af77]">Hole Cards</span>
                 <span className="ml-3 text-sm text-[#fff1de]">{heroCards.join(' • ')}</span>
               </div>
             </div>
@@ -301,7 +301,7 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
                 </div>
 
                 <div className="min-w-0">
-                  <div className="club-label text-[#d4af77]">Betting Strip</div>
+                  <div className="club-label text-[#d4af77]">Table Action</div>
                   <p className="mt-3 text-sm leading-7 text-[#f0e2ce]/78 sm:text-base">
                     {heroBanner}
                   </p>
@@ -325,7 +325,7 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
 
             <div className="mt-4 flex flex-wrap justify-center gap-3">
               <Button variant="ghost" onClick={() => setShowChipRequestModal(true)}>
-                Request Chips
+                Add Chips
               </Button>
               <Button
                 variant="ghost"
@@ -343,10 +343,10 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
 
             <div className="mx-auto mt-8 flex max-w-[1180px] flex-col gap-5 border-t border-white/8 pt-6 sm:flex-row sm:items-end sm:justify-between">
               <div className="min-w-0">
-                <div className="club-label text-[#d6b078]">Username</div>
+                <div className="club-label text-[#d6b078]">Player</div>
                 <div className="mt-3 text-xl font-semibold text-[#fff4e7] sm:text-2xl">{heroSeat?.name ?? 'You'}</div>
                 <div className="mt-2 text-[0.72rem] uppercase tracking-[0.24em] text-[#d4af77]/68">
-                  {heroSeat?.label ?? 'Seat live'} • Premium table seat
+                  {heroSeat?.label ?? 'Seat live'} • Active table seat
                 </div>
               </div>
 
@@ -383,10 +383,10 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
           <div className="w-full max-w-xl rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(25,10,14,0.94),rgba(9,4,7,0.98))] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.48)]">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="club-label text-[#d6b078]">Chip Request</div>
-                <h2 className="club-display mt-3 text-4xl text-[#fff4e7]">Refresh your demo stack</h2>
+                <div className="club-label text-[#d6b078]">Table Refill</div>
+                <h2 className="club-display mt-3 text-4xl text-[#fff4e7]">Add chips to your stack</h2>
                 <p className="mt-4 text-sm leading-7 text-[#eadcc9]/72">
-                  Players can request extra demo chips without leaving the room. This modal stays lightweight so the table remains the star of the experience.
+                  Add chips without leaving the hand. The flow stays lightweight so the table remains the focus.
                 </p>
               </div>
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#d3aa6d]/16 bg-[#d3aa6d]/10">
@@ -400,14 +400,14 @@ export default function PokerTablePage({ onNavigate, table }: PokerTablePageProp
                   key={amount}
                   type="button"
                   onClick={() => {
-                    handleAction(`Chip request submitted for ${formatMoney(amount)}. Your demo balance update is pending.`);
+                    handleAction(`Chip request submitted for ${formatMoney(amount)}. Your table balance update is pending.`);
                     setShowChipRequestModal(false);
                   }}
                   className="rounded-[24px] border border-white/10 bg-white/[0.04] px-4 py-5 text-left transition hover:-translate-y-0.5 hover:border-[#d3aa6d]/20 hover:bg-white/[0.07]"
                 >
-                  <div className="club-label text-[#d6b078]">Request</div>
+                  <div className="club-label text-[#d6b078]">Add</div>
                   <div className="club-display mt-3 text-3xl text-[#fff3e2]">{formatMoney(amount)}</div>
-                  <div className="mt-2 text-sm leading-6 text-[#eadcc9]/68">Demo table balance</div>
+                  <div className="mt-2 text-sm leading-6 text-[#eadcc9]/68">Table balance</div>
                 </button>
               ))}
             </div>
