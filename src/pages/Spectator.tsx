@@ -107,8 +107,8 @@ export default function Spectator({ onNavigate, table }: SpectatorProps) {
                 <Button variant="secondary" onClick={() => onNavigate?.('table')}>
                   Player View
                 </Button>
-                <Button variant="primary" onClick={() => onNavigate?.('admin-dashboard')}>
-                  Admin Panel
+                <Button variant="primary" onClick={() => onNavigate?.('login')}>
+                  Join Private Table
                 </Button>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function Spectator({ onNavigate, table }: SpectatorProps) {
                   ['Spectators', `${table.spectators}`],
                   ['Seats used', `${table.currentPlayers}/${table.maxPlayers}`],
                   ['Table access', table.isPrivate ? 'Invite controlled' : 'Open demo room'],
-                  ['Host permissions', 'Enable, remove, or mute spectators']
+                  ['View mode', 'Public board and table-state visibility']
                 ].map(([label, value]) => (
                   <div key={label} className="flex items-center justify-between rounded-[18px] border border-white/8 bg-black/18 px-4 py-3">
                     <span className="text-sm text-[#eadcc8]/60">{label}</span>
@@ -216,11 +216,11 @@ export default function Spectator({ onNavigate, table }: SpectatorProps) {
             <div className="rounded-[30px] border border-[#d3aa6d]/14 bg-[#d3aa6d]/10 p-5 text-sm leading-7 text-[#f1e4d0]">
               <div className="flex items-center gap-3">
                 <ShieldCheck className="h-5 w-5 text-[#e1ba82]" />
-                Admin can enable or disable spectators for each table at any time.
+                Spectator access can be enabled or disabled per table without changing the player journey.
               </div>
               <div className="mt-4 flex items-center gap-3">
                 <Users className="h-5 w-5 text-[#e1ba82]" />
-                Waiting-list entry can move a spectator into a seat when the host approves.
+                Waiting-list entry can move a spectator into a seat when table access opens.
               </div>
             </div>
           </aside>

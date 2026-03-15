@@ -3,7 +3,6 @@ import {
   Activity,
   AlertTriangle,
   Eye,
-  Gauge,
   Layers3,
   Palette,
   PlayCircle,

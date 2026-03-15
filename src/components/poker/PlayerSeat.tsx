@@ -14,7 +14,7 @@ interface PlayerSeatProps {
   totalSeats: number;
 }
 
-export default function PlayerSeat({ player, position }: PlayerSeatProps) {
+export default function PlayerSeat({ player }: PlayerSeatProps) {
   if (!player) {
     return (
       <div className="flex flex-col items-center gap-2">

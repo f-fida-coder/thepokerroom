@@ -5,27 +5,36 @@ import Button from '../common/Button';
 interface TableCardProps {
   table: DemoTable;
   parallelCount: number;
-  onClick: () => void;
-  onSpectate: () => void;
+  onEnter: () => void;
+  onPreview: () => void;
+  onPrivateJoin?: () => void;
 }
 
-export default function TableCard({ table, parallelCount, onClick, onSpectate }: TableCardProps) {
+export default function TableCard({
+  table,
+  parallelCount,
+  onEnter,
+  onPreview,
+  onPrivateJoin
+}: TableCardProps) {
   const statusMap = {
     waiting: {
-      label: 'Waiting',
+      label: 'Seats opening',
       tone: 'border-[#7f6c41]/18 bg-[#7f6c41]/10 text-[#f0ddb8]'
     },
     playing: {
-      label: 'Playing',
+      label: 'Playing live',
       tone: 'border-[#b68955]/18 bg-[#b68955]/10 text-[#f6e2bf]'
     },
     full: {
-      label: 'Spectate',
+      label: 'View only',
       tone: 'border-[#5c5169]/18 bg-[#5c5169]/10 text-[#e4dbf7]'
     }
   } as const;
 
   const status = statusMap[table.status];
+  const primaryLabel = table.status === 'full' ? 'View Table' : 'Enter a Table';
+  const secondaryLabel = table.isPrivate ? 'Join Private Table' : 'Preview Table';
 
   return (
     <article className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(25,10,14,0.92),rgba(9,4,7,0.96))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.38)] transition duration-300 hover:-translate-y-1 hover:border-[#d3aa6d]/20">
@@ -52,7 +61,7 @@ export default function TableCard({ table, parallelCount, onClick, onSpectate }:
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-sm text-[#eadcc8]/68">
               <Users className="h-4 w-4 text-[#d2ac73]" />
-              Players
+              Seats filled
             </div>
             <div className="text-sm font-medium text-[#fff1dd]">
               {table.currentPlayers}/{table.maxPlayers}
@@ -61,29 +70,29 @@ export default function TableCard({ table, parallelCount, onClick, onSpectate }:
           <div className="mt-3 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-sm text-[#eadcc8]/68">
               <Eye className="h-4 w-4 text-[#d2ac73]" />
-              Spectators
+              Watching live
             </div>
             <div className="text-sm font-medium text-[#fff1dd]">{table.spectators}</div>
           </div>
           <div className="mt-3 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-sm text-[#eadcc8]/68">
               <Sparkles className="h-4 w-4 text-[#d2ac73]" />
-              Mixed flow
+              Room style
             </div>
-            <div className="text-right text-sm font-medium text-[#fff1dd]">{table.mixedRotation}</div>
+            <div className="text-right text-sm font-medium text-[#fff1dd]">{table.ambiance ?? 'Premium table floor'}</div>
           </div>
           <div className="mt-3 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-sm text-[#eadcc8]/68">
               <Layers3 className="h-4 w-4 text-[#d2ac73]" />
-              Floor live
+              Tables live
             </div>
-            <div className="text-right text-sm font-medium text-[#fff1dd]">{parallelCount} rooms in program</div>
+            <div className="text-right text-sm font-medium text-[#fff1dd]">{parallelCount} rooms available</div>
           </div>
         </div>
 
         <div className="mt-5 grid gap-3">
           <div className="flex items-center justify-between rounded-[20px] border border-white/10 bg-white/[0.04] px-4 py-3">
-            <span className="text-sm text-[#eadcc8]/66">Room code</span>
+            <span className="text-sm text-[#eadcc8]/66">Private room code</span>
             <span className="text-sm font-medium text-[#fff1de]">{table.roomCode}</span>
           </div>
           <div className="flex items-center justify-between rounded-[20px] border border-white/10 bg-white/[0.04] px-4 py-3">
@@ -98,20 +107,24 @@ export default function TableCard({ table, parallelCount, onClick, onSpectate }:
 
         <div className="mt-5 flex flex-wrap gap-2">
           <span className="rounded-full border border-[#d4af77]/16 bg-[#d4af77]/10 px-3 py-1.5 text-[0.68rem] uppercase tracking-[0.2em] text-[#e3c08b]">
-            Demo preview
+            Player access ready
           </span>
           <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[0.68rem] uppercase tracking-[0.2em] text-[#eadcc8]/68">
-            {table.status === 'playing' ? 'Concurrent game live' : 'Queued beside live rooms'}
+            {table.status === 'playing' ? 'Open now' : table.status === 'waiting' ? 'Join queue forming' : 'Watch first'}
           </span>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button variant="primary" size="md" onClick={onClick} className="flex-1">
-            {table.status === 'full' ? 'Open Spectator View' : 'Join Table'}
+          <Button variant="primary" size="md" onClick={onEnter} className="flex-1">
+            {primaryLabel}
             <MoveRight className="ml-2 h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="md" onClick={onSpectate}>
-            Spectate
+          <Button
+            variant="ghost"
+            size="md"
+            onClick={table.isPrivate ? (onPrivateJoin ?? onPreview) : onPreview}
+          >
+            {secondaryLabel}
           </Button>
         </div>
       </div>

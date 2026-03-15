@@ -98,6 +98,20 @@
     transform-style: preserve-3d;
   }
 
+  .club-stage--immersive {
+    min-height: clamp(560px, 54vw, 860px);
+    background:
+      radial-gradient(circle at top, rgba(255, 220, 155, 0.12), transparent 18%),
+      radial-gradient(circle at 50% 40%, rgba(146, 17, 36, 0.16), transparent 30%),
+      linear-gradient(180deg, rgba(12, 5, 7, 0.22), rgba(4, 2, 3, 0.04));
+  }
+
+  .club-table--immersive {
+    width: min(100%, 1120px);
+    aspect-ratio: 1.72 / 1;
+    transform: perspective(2200px) rotateX(13deg) rotateY(-2deg);
+  }
+
   .club-table__ground,
   .club-table__underside,
   .club-table__rail,
@@ -575,6 +589,118 @@
     right: 24%;
     bottom: 29%;
   }
+
+  .club-stage--immersive .club-chandelier {
+    top: 18px;
+    height: 128px;
+    width: 128px;
+    filter: blur(18px);
+    opacity: 0.72;
+  }
+
+  .club-stage--immersive .club-table__ground {
+    inset: 30% 7% -7%;
+    filter: blur(34px);
+    transform: translateY(88px) scale(1.14);
+  }
+
+  .club-stage--immersive .club-table__underside {
+    inset: 13% 5% 9%;
+    transform: translateY(30px) scaleY(0.9);
+  }
+
+  .club-stage--immersive .club-table__rail {
+    inset: 8% 4% 13%;
+  }
+
+  .club-stage--immersive .club-table__trim {
+    inset: 15% 9% 19%;
+  }
+
+  .club-stage--immersive .club-table__felt {
+    inset: 18% 12% 22%;
+  }
+
+  .club-stage--immersive .club-table__brand {
+    top: 16%;
+  }
+
+  .club-stage--immersive .club-pot {
+    top: 54%;
+    min-width: min(340px, 66%);
+    padding: 22px 28px 20px;
+  }
+
+  .club-stage--immersive .club-board {
+    gap: 12px;
+  }
+
+  .club-stage--immersive .club-chip-stack {
+    bottom: 38%;
+  }
+
+  .club-stage--immersive .club-seat {
+    width: 146px;
+    padding: 12px 12px 10px;
+    background:
+      linear-gradient(180deg, rgba(19, 8, 11, 0.92), rgba(7, 3, 5, 0.88));
+  }
+
+  .club-stage--immersive .club-seat--top-left {
+    left: 7%;
+    top: 19%;
+  }
+
+  .club-stage--immersive .club-seat--top-center {
+    top: 6%;
+  }
+
+  .club-stage--immersive .club-seat--top-right {
+    right: 7%;
+    top: 19%;
+  }
+
+  .club-stage--immersive .club-seat--bottom-left {
+    bottom: 18%;
+    left: 10%;
+  }
+
+  .club-stage--immersive .club-seat--bottom-center {
+    bottom: 6%;
+  }
+
+  .club-stage--immersive .club-seat--bottom-right {
+    bottom: 18%;
+    right: 10%;
+  }
+
+  .club-stage--immersive .club-bet-marker--top-left {
+    left: 29%;
+    top: 33%;
+  }
+
+  .club-stage--immersive .club-bet-marker--top-center {
+    top: 25%;
+  }
+
+  .club-stage--immersive .club-bet-marker--top-right {
+    right: 29%;
+    top: 33%;
+  }
+
+  .club-stage--immersive .club-bet-marker--bottom-left {
+    left: 29%;
+    bottom: 30%;
+  }
+
+  .club-stage--immersive .club-bet-marker--bottom-center {
+    bottom: 24%;
+  }
+
+  .club-stage--immersive .club-bet-marker--bottom-right {
+    right: 29%;
+    bottom: 30%;
+  }
 }
 
 @layer utilities {
@@ -617,6 +743,15 @@
   .club-table {
     aspect-ratio: 1.22 / 1;
     transform: perspective(1800px) rotateX(13deg) rotateY(-3deg);
+  }
+
+  .club-stage--immersive {
+    min-height: clamp(500px, 66vw, 740px);
+  }
+
+  .club-table--immersive {
+    aspect-ratio: 1.5 / 1;
+    transform: perspective(1800px) rotateX(11deg);
   }
 }
 
@@ -688,6 +823,65 @@
 
   .club-chip-stack--right {
     right: 16%;
+  }
+
+  .club-stage--immersive {
+    min-height: 560px;
+  }
+
+  .club-table--immersive {
+    aspect-ratio: 1.34 / 1;
+    transform: perspective(1400px) rotateX(8deg);
+  }
+
+  .club-stage--immersive .club-seat {
+    width: 104px;
+    padding: 9px 9px 8px;
+  }
+
+  .club-stage--immersive .club-seat--top-left {
+    left: 1%;
+    top: 14%;
+  }
+
+  .club-stage--immersive .club-seat--top-right {
+    right: 1%;
+    top: 14%;
+  }
+
+  .club-stage--immersive .club-seat--bottom-left {
+    left: 2%;
+    bottom: 18%;
+  }
+
+  .club-stage--immersive .club-seat--bottom-right {
+    right: 2%;
+    bottom: 18%;
+  }
+
+  .club-stage--immersive .club-pot {
+    min-width: min(240px, 72%);
+    padding: 18px 18px 16px;
+  }
+
+  .club-stage--immersive .club-bet-marker--top-left {
+    left: 18%;
+    top: 30%;
+  }
+
+  .club-stage--immersive .club-bet-marker--top-right {
+    right: 18%;
+    top: 30%;
+  }
+
+  .club-stage--immersive .club-bet-marker--bottom-left {
+    left: 19%;
+    bottom: 29%;
+  }
+
+  .club-stage--immersive .club-bet-marker--bottom-right {
+    right: 19%;
+    bottom: 29%;
   }
 }
 
@@ -780,5 +974,50 @@
 
   .club-table__brand strong {
     font-size: 0.94rem;
+  }
+
+  .club-stage--immersive {
+    min-height: 470px;
+  }
+
+  .club-table--immersive {
+    aspect-ratio: 1.12 / 1;
+    transform: none;
+  }
+
+  .club-stage--immersive .club-table__felt {
+    inset: 18% 10% 24%;
+  }
+
+  .club-stage--immersive .club-table__trim {
+    inset: 15% 7% 21%;
+  }
+
+  .club-stage--immersive .club-seat {
+    width: 88px;
+  }
+
+  .club-stage--immersive .club-seat--top-left {
+    left: -2%;
+    top: 12%;
+  }
+
+  .club-stage--immersive .club-seat--top-center {
+    top: 1%;
+  }
+
+  .club-stage--immersive .club-seat--top-right {
+    right: -2%;
+    top: 12%;
+  }
+
+  .club-stage--immersive .club-seat--bottom-left {
+    left: -1%;
+    bottom: 17%;
+  }
+
+  .club-stage--immersive .club-seat--bottom-right {
+    right: -1%;
+    bottom: 17%;
   }
 }

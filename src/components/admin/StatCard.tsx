@@ -26,6 +26,7 @@ export default function StatCard({
     blue: 'from-[#4b6178]/16 to-transparent text-[#cbd9ea]',
     red: 'from-[#8d4f47]/16 to-transparent text-[#efd7d1]'
   };
+  const iconToneClass = tones[color].split(' ')[2] ?? 'text-[#e4bf87]';
 
   return (
     <article className="relative overflow-hidden rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(25,10,14,0.92),rgba(9,4,7,0.96))] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.38)]">
@@ -33,7 +34,7 @@ export default function StatCard({
       <div className="relative z-10">
         <div className="flex items-start justify-between gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-black/18">
-            <Icon className={`h-5 w-5 ${tones[color].split(' ').at(-1)}`} />
+            <Icon className={`h-5 w-5 ${iconToneClass}`} />
           </div>
           {trend && (
             <div className={`rounded-full px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.18em] ${trend.isPositive ? 'bg-[#8c9d67]/18 text-[#e3edd2]' : 'bg-[#8d4f47]/20 text-[#f2d5cf]'}`}>

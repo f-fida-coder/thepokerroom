@@ -24,9 +24,20 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'landing':
-        return <Landing onNavigate={(page) => setCurrentPage(page)} />;
+        return (
+          <Landing
+            onNavigate={(page) => setCurrentPage(page)}
+            onOpenTable={(tableId, page) => openTable(tableId, page)}
+          />
+        );
       case 'login':
-        return <Login onNavigate={(page) => setCurrentPage(page)} />;
+        return (
+          <Login
+            onNavigate={(page) => setCurrentPage(page)}
+            table={selectedTable}
+            onEnterTable={(tableId) => openTable(tableId, 'table')}
+          />
+        );
       case 'register':
         return <Register onNavigate={(page) => setCurrentPage(page)} />;
       case 'lobby':
@@ -60,7 +71,12 @@ function App() {
           />
         );
       default:
-        return <Landing onNavigate={(page) => setCurrentPage(page)} />;
+        return (
+          <Landing
+            onNavigate={(page) => setCurrentPage(page)}
+            onOpenTable={(tableId, page) => openTable(tableId, page)}
+          />
+        );
     }
   };
 

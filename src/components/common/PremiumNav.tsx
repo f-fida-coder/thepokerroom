@@ -1,4 +1,4 @@
-import { LayoutDashboard, LogIn, Spade, Table2 } from 'lucide-react';
+import { LayoutDashboard, LockKeyhole, Spade, Table2 } from 'lucide-react';
 import type { DemoPage } from '../../types/demo';
 
 interface PremiumNavProps {
@@ -9,13 +9,31 @@ interface PremiumNavProps {
   compact?: boolean;
 }
 
-const navItems: { label: string; page: DemoPage }[] = [
-  { label: 'Home', page: 'landing' },
-  { label: 'Tables', page: 'lobby' },
-  { label: 'Live Table', page: 'table' },
-  { label: 'Spectator', page: 'spectator' },
-  { label: 'Admin Access', page: 'admin-dashboard' }
-];
+function getNavItems(current: DemoPage, isAdminSurface: boolean) {
+  if (isAdminSurface) {
+    return [
+      { label: 'Player Site', page: 'landing' as DemoPage },
+      { label: 'Staff Access', page: 'admin-login' as DemoPage },
+      { label: 'Dashboard', page: 'admin-dashboard' as DemoPage }
+    ];
+  }
+
+  const items: { label: string; page: DemoPage }[] = [
+    { label: 'Home', page: 'landing' },
+    { label: 'View Games', page: 'lobby' },
+    { label: 'Join Private Table', page: 'login' }
+  ];
+
+  if (current === 'table') {
+    items.splice(2, 0, { label: 'Live Table', page: 'table' });
+  }
+
+  if (current === 'spectator') {
+    items.splice(2, 0, { label: 'Table Preview', page: 'spectator' });
+  }
+
+  return items;
+}
 
 export default function PremiumNav({
   current,
@@ -24,6 +42,9 @@ export default function PremiumNav({
   subtitle,
   compact = false
 }: PremiumNavProps) {
+  const isAdminSurface = current === 'admin-login' || current === 'admin-dashboard';
+  const navItems = getNavItems(current, isAdminSurface);
+
   return (
     <div className="sticky top-0 z-40 border-b border-white/6 bg-[#120609]/78 backdrop-blur-2xl">
       <div className="mx-auto flex max-w-[1440px] items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
@@ -38,7 +59,7 @@ export default function PremiumNav({
           <div className={compact ? 'hidden sm:block' : ''}>
             <div className="club-display text-2xl leading-none text-[#fff4e8]">The poker room</div>
             <div className="mt-1 text-[0.68rem] uppercase tracking-[0.34em] text-[#d2ae73]/70">
-              {subtitle ?? 'Private Poker Club'}
+              {subtitle ?? (isAdminSurface ? 'Staff Access' : 'Premium Player Lounge')}
             </div>
           </div>
         </button>
@@ -67,35 +88,49 @@ export default function PremiumNav({
         <div className="ml-auto flex items-center gap-3">
           {title && !compact && (
             <div className="hidden text-right xl:block">
-              <div className="club-label text-[#d7b27d]">Current Room</div>
+              <div className="club-label text-[#d7b27d]">{isAdminSurface ? 'Current Surface' : 'Current Room'}</div>
               <div className="mt-1 text-sm text-[#f2e5d2]">{title}</div>
             </div>
           )}
-          <button
-            type="button"
-            onClick={() => onNavigate?.('login')}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-medium tracking-[0.02em] text-[#f5ecdf] backdrop-blur-md transition duration-300 hover:border-[#d0a66a]/25 hover:bg-white/[0.08]"
-          >
-            <LogIn className="h-4 w-4" />
-            Login
-          </button>
-          <button
-            type="button"
-            onClick={() => onNavigate?.('admin-dashboard')}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#f4d5a3]/25 bg-[linear-gradient(180deg,#f0c98a_0%,#c58a4e_48%,#8e5b31_100%)] px-5 py-2.5 text-sm font-semibold tracking-[0.02em] text-[#1d1109] shadow-[0_16px_34px_rgba(157,98,46,0.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(157,98,46,0.45)]"
-          >
-            <LayoutDashboard className="h-4 w-4" />
-            Admin Access
-          </button>
-          {compact && (
-            <button
-              type="button"
-              onClick={() => onNavigate?.('lobby')}
-              className="hidden items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-medium tracking-[0.02em] text-[#f5ecdf] backdrop-blur-md transition duration-300 hover:border-[#d0a66a]/25 hover:bg-white/[0.08] md:inline-flex"
-            >
-              <Table2 className="h-4 w-4" />
-              Tables
-            </button>
+
+          {isAdminSurface ? (
+            <>
+              <button
+                type="button"
+                onClick={() => onNavigate?.('landing')}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-medium tracking-[0.02em] text-[#f5ecdf] backdrop-blur-md transition duration-300 hover:border-[#d0a66a]/25 hover:bg-white/[0.08]"
+              >
+                <Table2 className="h-4 w-4" />
+                Player Site
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigate?.('admin-dashboard')}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#f4d5a3]/25 bg-[linear-gradient(180deg,#f0c98a_0%,#c58a4e_48%,#8e5b31_100%)] px-5 py-2.5 text-sm font-semibold tracking-[0.02em] text-[#1d1109] shadow-[0_16px_34px_rgba(157,98,46,0.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(157,98,46,0.45)]"
+              >
+                <LayoutDashboard className="h-4 w-4" />
+                Dashboard
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => onNavigate?.('login')}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-medium tracking-[0.02em] text-[#f5ecdf] backdrop-blur-md transition duration-300 hover:border-[#d0a66a]/25 hover:bg-white/[0.08]"
+              >
+                <LockKeyhole className="h-4 w-4" />
+                Join Private Table
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigate?.('lobby')}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#f4d5a3]/25 bg-[linear-gradient(180deg,#f0c98a_0%,#c58a4e_48%,#8e5b31_100%)] px-5 py-2.5 text-sm font-semibold tracking-[0.02em] text-[#1d1109] shadow-[0_16px_34px_rgba(157,98,46,0.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(157,98,46,0.45)]"
+              >
+                <Table2 className="h-4 w-4" />
+                Enter a Table
+              </button>
+            </>
           )}
         </div>
       </div>
