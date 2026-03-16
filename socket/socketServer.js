@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for the Socket.IO or WebSocket server bootstrap.
-*/

@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for chip request and transaction endpoints.
-*/

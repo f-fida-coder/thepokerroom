@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for rake summaries and report endpoints.
-*/

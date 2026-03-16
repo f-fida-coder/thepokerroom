@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for the future backend server bootstrap.
-*/

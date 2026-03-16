@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for main pot and side pot calculations.
-*/

@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for player statistics and leaderboard endpoints.
-*/

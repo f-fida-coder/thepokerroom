@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for deck creation and shuffle utilities.
-*/

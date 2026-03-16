@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for access code and security verification endpoints.
-*/

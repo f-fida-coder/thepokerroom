@@ -1,4 +1,0 @@
-/*
-  Demo scaffold only.
-  Reserved for spectator room permissions and public state shaping.
-*/
