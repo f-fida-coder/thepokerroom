@@ -1,29 +1,14 @@
-import type { CSSProperties, FormEvent } from 'react';
-import { useState } from 'react';
+import type { FormEvent } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
-import { ArrowRight, Club, LockKeyhole, Settings2, Spade } from 'lucide-react';
+import { Club, LockKeyhole, Settings2, Spade } from 'lucide-react';
+import tablePreviewImage from '../../ChatGPT Image Mar 17, 2026, 03_56_45 PM.png';
+import heroBannerImage from '../../poker_banner.png';
 
 type Feature = {
   title: string;
   copy: string;
   icons: LucideIcon[];
-};
-
-type Seat = {
-  name: string;
-  stack: string;
-  className: string;
-  initials: string;
-  tag: string;
-  topColor: string;
-  bottomColor: string;
-};
-
-type Chip = {
-  left: string;
-  top: string;
-  size: number;
-  tone: 'dark' | 'gold';
 };
 
 const features: Feature[] = [
@@ -44,68 +29,45 @@ const features: Feature[] = [
   },
 ];
 
-const tableSeats: Seat[] = [
-  {
-    name: 'Sophia',
-    stack: '60,700',
-    className: 'player-seat--north-left',
-    initials: 'S',
-    tag: 'SB',
-    topColor: '#f4d7aa',
-    bottomColor: '#7a5731',
-  },
-  {
-    name: 'Eric',
-    stack: '58,400',
-    className: 'player-seat--north-right',
-    initials: 'E',
-    tag: 'BB',
-    topColor: '#edc89b',
-    bottomColor: '#8a4532',
-  },
-  {
-    name: 'Javier',
-    stack: '60,700',
-    className: 'player-seat--west',
-    initials: 'J',
-    tag: 'UTG',
-    topColor: '#f7d7a9',
-    bottomColor: '#4d5a76',
-  },
-  {
-    name: 'Daniel',
-    stack: '4,000',
-    className: 'player-seat--east',
-    initials: 'D',
-    tag: 'BTN',
-    topColor: '#d7b488',
-    bottomColor: '#524742',
-  },
-];
-
-const heroChips: Chip[] = [
-  { left: '2%', top: '51%', size: 88, tone: 'dark' },
-  { left: '7%', top: '57%', size: 92, tone: 'dark' },
-  { left: '17%', top: '53%', size: 86, tone: 'gold' },
-  { left: '14%', top: '64%', size: 80, tone: 'gold' },
-  { left: '23%', top: '64%', size: 66, tone: 'dark' },
-  { left: '8%', top: '66%', size: 76, tone: 'dark' },
-  { left: '78%', top: '49%', size: 52, tone: 'dark' },
-  { left: '84%', top: '47%', size: 58, tone: 'gold' },
-];
-
-const communityCards = [
-  { rank: '7', suit: 'heart', symbol: '\u2665' },
-  { rank: '2', suit: 'diamond', symbol: '\u2666' },
-  { rank: '4', suit: 'spade', symbol: '\u2660' },
-  { rank: '', suit: 'ghost', symbol: '' },
-  { rank: '', suit: 'ghost', symbol: '' },
-];
-
 export default function Landing() {
   const [accessCode, setAccessCode] = useState('');
   const [status, setStatus] = useState<string>('');
+  const topbarRef = useRef<HTMLElement>(null);
   const securityMessage = status || 'Only invited players can enter this private room.';
+
+  useLayoutEffect(() => {
+    const topbar = topbarRef.current;
+
+    if (!topbar) {
+      return undefined;
+    }
+
+    // Keep the fixed topbar from overlapping the hero as the nav height changes responsively.
+    const syncTopbarOffset = () => {
+      document.documentElement.style.setProperty('--topbar-offset', `${topbar.offsetHeight}px`);
+    };
+
+    syncTopbarOffset();
+
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', syncTopbarOffset);
+
+      return () => {
+        window.removeEventListener('resize', syncTopbarOffset);
+        document.documentElement.style.removeProperty('--topbar-offset');
+      };
+    }
+
+    const resizeObserver = new ResizeObserver(syncTopbarOffset);
+    resizeObserver.observe(topbar);
+    window.addEventListener('resize', syncTopbarOffset);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', syncTopbarOffset);
+      document.documentElement.style.removeProperty('--topbar-offset');
+    };
+  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -120,7 +82,7 @@ export default function Landing() {
 
   return (
     <div className="landing-page">
-      <header className="topbar">
+      <header className="topbar" ref={topbarRef}>
         <a className="brand-mark" href="#" aria-label="The poker room home">
           <img src="/site-icon.svg" alt="" />
         </a>
@@ -138,42 +100,7 @@ export default function Landing() {
       <main className="landing-main">
         <section className="hero-section">
           <div className="hero-stage">
-            <div className="hero-table" aria-hidden="true" />
-
-            <div className="hero-copy">
-              <p className="hero-kicker">Secure private poker</p>
-              <h1>The poker room</h1>
-              <p className="hero-subtitle">Play secure private games with friends.</p>
-              <a className="hero-cta" href="#preview">
-                Enter poker room
-                <ArrowRight aria-hidden="true" />
-              </a>
-            </div>
-
-            <div className="chip-cloud" aria-hidden="true">
-              {heroChips.map((chip) => (
-                <span
-                  key={`${chip.left}-${chip.top}-${chip.size}`}
-                  className={`chip chip--${chip.tone}`}
-                  style={
-                    {
-                      left: chip.left,
-                      top: chip.top,
-                      width: `${chip.size}px`,
-                      height: `${chip.size}px`,
-                    } as CSSProperties
-                  }
-                />
-              ))}
-            </div>
-
-            <div className="hero-card-burst" aria-hidden="true">
-              <div className="floating-card floating-card--front">
-                <span className="floating-card__rank">A</span>
-                <span className="floating-card__suit">S</span>
-              </div>
-              <div className="floating-card floating-card--back">S</div>
-            </div>
+            <img className="hero-banner-image" src={heroBannerImage} alt="" aria-hidden="true" />
 
             <form className="security-card" id="security" onSubmit={handleSubmit}>
               <div className="security-accent" aria-hidden="true" />
@@ -237,67 +164,7 @@ export default function Landing() {
 
           <div className="preview-stage">
             <div className="preview-table">
-              <div className="preview-table__felt" aria-hidden="true" />
-              <div className="table-status-icons" aria-hidden="true">
-                <span className="table-status-icon table-status-icon--blue">\u2666</span>
-                <span className="table-status-icon table-status-icon--copper">\u2665</span>
-                <span className="table-status-icon table-status-icon--gold">\u2660</span>
-              </div>
-              <div className="preview-pot">POT: 18,200</div>
-
-              {tableSeats.map((seat) => (
-                <div className={`player-seat ${seat.className}`} key={seat.name}>
-                  <div
-                    className="player-seat__avatar"
-                    style={
-                      {
-                        '--avatar-top': seat.topColor,
-                        '--avatar-bottom': seat.bottomColor,
-                      } as CSSProperties
-                    }
-                  >
-                    {seat.initials}
-                  </div>
-                  <div className="player-seat__meta">
-                    <span className="player-seat__tag">{seat.tag}</span>
-                    <span className="player-seat__name">{seat.name}</span>
-                    <span className="player-seat__stack">{seat.stack}</span>
-                  </div>
-                </div>
-              ))}
-
-              <div className="community-cards" aria-label="Community cards">
-                {communityCards.map((card, index) => (
-                  <div
-                    className={`board-card ${card.suit === 'ghost' ? 'board-card--ghost' : ''}`}
-                    key={`${card.rank}-${index}`}
-                  >
-                    {card.suit === 'ghost' ? null : (
-                      <>
-                        <span className={`board-card__rank board-card__rank--${card.suit}`}>
-                          {card.rank}
-                        </span>
-                        <span className={`board-card__suit board-card__suit--${card.suit}`}>
-                          {card.symbol}
-                        </span>
-                      </>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <div className="dealer-pills" aria-hidden="true">
-                <span />
-                <span />
-              </div>
-            </div>
-
-            <div className="preview-chip-pile" aria-hidden="true">
-              <span className="chip chip--dark preview-chip preview-chip--1" />
-              <span className="chip chip--gold preview-chip preview-chip--2" />
-              <span className="chip chip--dark preview-chip preview-chip--3" />
-              <span className="chip chip--dark preview-chip preview-chip--4" />
-              <span className="chip chip--gold preview-chip preview-chip--5" />
+              <img className="preview-table-image" src={tablePreviewImage} alt="Poker table preview" />
             </div>
 
             <aside className="phone-mockup">
